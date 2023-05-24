@@ -11,7 +11,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late GoogleMapController mapController;
-  final LatLng _center = const LatLng(25.1193, 53.3773);
+  final LatLng _center = const LatLng(25.7617, -80.1918);
+
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -38,6 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   GoogleMap _displayMap() {
     return GoogleMap(
-        initialCameraPosition: CameraPosition(target: _center, zoom: 11.0));
+        initialCameraPosition: CameraPosition(target: _center, zoom: 15.0));
   }
 }
