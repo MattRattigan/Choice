@@ -20,37 +20,39 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   void changeOpacity() {
-    Timer(const Duration(seconds: 2), () {
-      setState(() {
-        introWidgets.opacity1 = 0.0;
-        introWidgets.opacity2 = 1.0;
-      });
+    for (var i = 0; i <= 15; i+=2) {
+  Timer(Duration(seconds: i), () {
+    setState(() {
+      switch (i) {
+        case 2:
+          introWidgets.opacity1 = 0.0;
+          introWidgets.opacity2 = 1.0;
+          break;
+        case 4:
+          introWidgets.opacity2 = 0.0;
+          introWidgets.opacity3 = 1.0;
+          break;
+        case 6:
+          introWidgets.opacity3 = 0.0;
+          introWidgets.opacity4 = 1.0;
+          break;
+        case 8:
+          introWidgets.finalText = "It's simple!";
+          introWidgets.opacity3 = 0.0;
+          introWidgets.opacity4 = 1.0;
+          break;
+        case 10:
+          Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+          break;
+      }
     });
-    Timer(const Duration(seconds: 6), () {
-      setState(() {
-        introWidgets.opacity2 = 0.0;
-        introWidgets.opacity3 = 1.0;
-      });
-    });
-    Timer(const Duration(seconds: 9), () {
-      setState(() {
-        introWidgets.opacity3 = 0.0;
-        introWidgets.opacity4 = 1.0;
-      });
-    });
-    Timer(const Duration(seconds: 11), () {
-      setState(() {
-        introWidgets.finalText = "It's simple!";
-        introWidgets.opacity3 = 0.0;
-        introWidgets.opacity4 = 1.0;
-      });
-    });
-    Timer(const Duration(seconds: 13), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
-      );
-    });
+  });
+}
+
+    
   }
 
   @override
