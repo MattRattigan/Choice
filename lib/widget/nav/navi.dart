@@ -3,7 +3,6 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:no_name_app/pages/favorite_screen.dart';
 import 'package:no_name_app/pages/home_screen.dart';
 import 'package:no_name_app/pages/questions_screen.dart';
-import 'package:no_name_app/pages/questions_screen.dart';
 import 'package:no_name_app/pages/settings_screen.dart';
 
 class NaviBar {
