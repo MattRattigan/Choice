@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
     return Scaffold(
+      appBar: CustomAppBar(bgColor: Colors.black,),
       bottomNavigationBar: navi.customGnav(context: context),
       backgroundColor: Colors.white,
       body: Stack(
@@ -78,18 +79,23 @@ class _HomeScreenState extends State<HomeScreen> {
     return Positioned(
       top: 0,
       child: Container(
+        padding: EdgeInsets.symmetric(vertical: 8.0),
         width: _deviceWidth,
         height: 100,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
           ),
         ),
         child: const ClipRRect(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
           ),
           child: HorizontalList(),
         ),
