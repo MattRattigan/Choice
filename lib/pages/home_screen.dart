@@ -4,8 +4,7 @@ import 'package:no_name_app/pages/login_screen.dart';
 import 'package:no_name_app/pages/random_choice_screen.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:no_name_app/widget/home/featuredlistview.dart';
-import 'package:no_name_app/widget/app_bar.dart';
+import 'package:no_name_app/widget/global/app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -119,3 +118,31 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+class HorizontalList extends StatelessWidget {
+  const HorizontalList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 200.0,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 20,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 200.0,
+            color: Colors.blue[(index+1)*100],
+            child: Center(
+              child: Text(
+                'Item $index',
+                style: const TextStyle(fontSize: 24, color: Colors.white),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+

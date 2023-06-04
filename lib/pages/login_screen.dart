@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:no_name_app/widget/frosted_glass.dart';
-import 'package:no_name_app/widget/app_bar.dart';
+import 'package:no_name_app/widget/global/frosted_glass.dart';
+import 'package:no_name_app/widget/global/app_bar.dart';
 
 class LoginScreen extends StatelessWidget {
   final double? _deviceHeight, _deviceWidth;
@@ -12,9 +12,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: CustomAppBar(),
-      body: const Center(
+      body: Center(
         child: FrostedGlassBox(
           boxWidth: 200.0,
           boxHeight: 200.0,

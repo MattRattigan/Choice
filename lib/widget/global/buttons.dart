@@ -1,4 +1,4 @@
-import 'package:no_name_app/widget/text.dart';
+import 'package:no_name_app/widget/global/text.dart';
 import 'package:flutter/material.dart';
 
 class DeviceButton extends StatelessWidget {
@@ -15,7 +15,10 @@ class DeviceButton extends StatelessWidget {
       height: 40, // specify the height
       child: FloatingActionButton.extended(
         onPressed: () {},
-        label: DeviceText(text: _btnText, fontWeight: FontWeight.bold,),
+        label: DeviceText(
+          text: _btnText,
+          fontWeight: FontWeight.bold,
+        ),
         backgroundColor: Colors.amber,
         icon: const Icon(
           Icons.touch_app,
@@ -25,3 +28,4 @@ class DeviceButton extends StatelessWidget {
     );
   }
 }
+
