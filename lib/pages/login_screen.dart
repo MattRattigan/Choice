@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:no_name_app/widget/global/frosted_glass.dart';
+import 'package:no_name_app/widget/nav/navi.dart';
 
 
 
@@ -43,7 +44,10 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    NaviBar navi = NaviBar();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      bottomNavigationBar: navi.customGnav(context: context),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -80,7 +84,7 @@ Widget loginColumn() {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Icon(
-          Icons.android,
+          Icons.flutter_dash,
           size: 100,
         ),
         const SizedBox(
@@ -163,7 +167,7 @@ Widget loginColumn() {
           child: Container(
             padding: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
-              color: Colors.deepPurple,
+              color: Colors.amberAccent,
               borderRadius: BorderRadius.circular(12),
             ),
             child: const Center(

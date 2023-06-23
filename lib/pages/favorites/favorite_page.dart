@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:no_name_app/pages/favorites/favorite_page_models.dart';
+import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:provider/provider.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -7,7 +8,9 @@ class FavoritePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NaviBar navi = NaviBar();
     return Scaffold(
+      bottomNavigationBar: navi.customGnav(context: context),
       appBar: AppBar(
         title: Text(
           'Favorite Page',
@@ -34,8 +37,8 @@ class FavoritePage extends StatelessWidget {
 class _favoritePageList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // NaviBar navi = NaviBar();
     var itemNameStyle = Theme.of(context).textTheme.titleLarge;
-
     var favoritepage = context.watch<FavoritePageModel>();
 
     return ListView.builder(

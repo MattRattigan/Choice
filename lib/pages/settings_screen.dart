@@ -2,38 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-
-// class SettingsScreen extends StatefulWidget {
-//   SettingsScreen({Key? key}) : super(key: key);
-
-//   @override
-//   _SettingsScreenState createState() => _SettingsScreenState();
-// }
-
-// class _SettingsScreenState extends State<SettingsScreen> {
-//   int selectedIndex = 3;
-//   void _updateState(int gnavIndex) {
-//     setState(() {
-//       selectedIndex = gnavIndex;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     NaviBar navi = NaviBar();
-//     return Scaffold(
-//       bottomNavigationBar: navi.customGnav(context: context),
-//       appBar: AppBar(
-//         title: Text('The Settings Screen'),
-//       ),
-//       body: Center(
-//           child: SvgPicture.asset('assets/images/login_card.svg',
-//               semanticsLabel: 'login_card')),
-//     );
-//   }
-// }
 
 
 class SettingsScreen extends StatefulWidget {
@@ -104,7 +73,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    color: Colors.purple,
+                    color: Colors.red,
                     child: ListTile(
                       // Creates the list tile
                       onTap: () {
@@ -117,8 +86,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      leading: const CircleAvatar(
-                        backgroundImage: AssetImage(
+                      leading: CircleAvatar(
+                        backgroundColor: _dark ? Colors.blueGrey: Colors.amberAccent,
+                        backgroundImage: const AssetImage(
                             SettingsScreen.pfp1), // Creates a circular avatar image
                       ),
                       trailing: const Icon(
@@ -142,7 +112,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           // is what starts before the tile the (lock) in this case
                           leading: const Icon(
                             Icons.lock_outline,
-                            color: Colors.purple,
+                            color: Colors.red,
                           ),
                           title: const Text('Change Password'),
                           trailing: const Icon(Icons.keyboard_arrow_right),
@@ -181,7 +151,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   SwitchListTile(
                     // Is a tile that has a toggle switch
-                    activeColor: Colors.purple,
+                    activeColor: Colors.red,
                     contentPadding: const EdgeInsets.all(0),
                     value: true,
                     title: const Text('Received Notifications'),
@@ -189,7 +159,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   SwitchListTile(
                     // Is a tile that has a toggle switch
-                    activeColor: Colors.purple,
+                    activeColor: Colors.red,
                     contentPadding: const EdgeInsets.all(0),
                     value: true,
                     title: const Text('Received Newsletter'),
@@ -197,7 +167,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   SwitchListTile(
                     // Is a tile that has a toggle switch
-                    activeColor: Colors.purple,
+                    activeColor: Colors.red,
                     contentPadding: const EdgeInsets.all(0),
                     value: true,
                     title: const Text('Received Offer Notifications'),
@@ -205,7 +175,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   SwitchListTile(
                     // Is a tile that has a toggle switch
-                    activeColor: Colors.purple,
+                    activeColor: Colors.red,
                     contentPadding: const EdgeInsets.all(0),
                     value: true,
                     title: const Text('Received App Updates'),
@@ -222,7 +192,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 height: 80,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
-                    color: Colors.purple, shape: BoxShape.circle),
+                    color: Colors.red, shape: BoxShape.circle),
               ),
             ),
             Positioned(
