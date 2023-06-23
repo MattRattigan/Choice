@@ -4,10 +4,23 @@ import 'package:no_name_app/widget/global/buttons.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:no_name_app/widget/global/custom_dropdown_button.dart';
 
-class QuestionScreen extends StatelessWidget {
+
+class QuestionScreen extends StatefulWidget {
+  QuestionScreen({Key? key}) : super(key: key);
+
+  @override
+  _QuestionScreenState createState() => _QuestionScreenState();
+}
+
+class _QuestionScreenState extends State<QuestionScreen> {
   late double _deviceHeight, _deviceWidth;
 
-  QuestionScreen({Key? key}) : super(key: key);
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

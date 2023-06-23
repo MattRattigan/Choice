@@ -145,4 +145,3 @@ class HorizontalList extends StatelessWidget {
     );
   }
 }
-

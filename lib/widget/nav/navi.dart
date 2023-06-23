@@ -28,6 +28,8 @@ class NaviBar {
           activeColor: activeColor,
           gap: 9,
           tabBackgroundColor: tabBg,
+          duration: const Duration(milliseconds: 400),
+
           padding: const EdgeInsets.all(16.0),
           tabs: [
             GButton(
@@ -44,24 +46,34 @@ class NaviBar {
               icon: Icons.favorite_border,
               text: 'Favorites',
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>  FavoriteScreen()),);
+                Navigator.pushNamed(
+                  context,
+                  '/favoriteList',
+                );
               },
             ),
             GButton(
               icon: Icons.search,
               text: 'Search',
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>  QuestionScreen()),);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QuestionScreen()),
+                );
               },
             ),
             GButton(
               icon: Icons.settings,
               text: 'Settings',
-               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>  SettingsScreen()),);
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsScreen()),
+                );
               },
             ),
           ],
+        
         ),
       ),
     );

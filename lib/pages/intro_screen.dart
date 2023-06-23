@@ -8,6 +8,7 @@ class IntroScreen extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreen> {
+  List<Timer> _timers = [];
   late double _deviceHeight, _deviceWidth;
   IntroWidgets introWidgets = IntroWidgets();
 
@@ -18,39 +19,45 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   void changeOpacity() {
-    for (var i = 0; i <= 15; i+=2) {
-  Timer(Duration(seconds: i), () {
-    setState(() {
-      switch (i) {
-        case 2:
-          introWidgets.opacity1 = 0.0;
-          introWidgets.opacity2 = 1.0;
-          break;
-        case 4:
-          introWidgets.opacity2 = 0.0;
-          introWidgets.opacity3 = 1.0;
-          break;
-        case 6:
-          introWidgets.opacity3 = 0.0;
-          introWidgets.opacity4 = 1.0;
-          break;
-        case 8:
-          introWidgets.finalText = "It's simple!";
-          introWidgets.opacity3 = 0.0;
-          introWidgets.opacity4 = 1.0;
-          break;
-        case 10:
-          Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-          );
-          break;
-      }
-    });
-  });
-}
-
-    
+    for (var i = 0; i <= 15; i += 2) {
+      var timer = Timer(
+        Duration(seconds: i),
+        () {
+          if (mounted) {
+            setState(
+              () {
+                switch (i) {
+                  case 2:
+                    introWidgets.opacity1 = 0.0;
+                    introWidgets.opacity2 = 1.0;
+                    break;
+                  case 4:
+                    introWidgets.opacity2 = 0.0;
+                    introWidgets.opacity3 = 1.0;
+                    break;
+                  case 6:
+                    introWidgets.opacity3 = 0.0;
+                    introWidgets.opacity4 = 1.0;
+                    break;
+                  case 8:
+                    introWidgets.finalText = "It's simple!";
+                    introWidgets.opacity3 = 0.0;
+                    introWidgets.opacity4 = 1.0;
+                    break;
+                  case 10:
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                    break;
+                }
+              },
+            );
+          }
+        },
+      );
+      _timers.add(timer);
+    }
   }
 
   @override
@@ -92,8 +99,15 @@ class _IntroScreenState extends State<IntroScreen> {
       ),
     );
   }
-}
 
+  @override
+  void dispose() {
+    for (var timer in _timers) {
+      timer.cancel();
+    }
+    super.dispose();
+  }
+}
 
 class Welcome {
   static double increment = 0;
@@ -105,7 +119,6 @@ class Welcome {
     double fontSize = 36,
     bool isBold = false,
     TextAlign textAlign = TextAlign.center,
-    
   }) {
     return AnimatedOpacity(
       opacity: opacity,
@@ -137,7 +150,7 @@ class Welcome {
     double sizedBoxHeight = 0.0;
     increment += 25.0;
     sizedBoxHeight = increment;
-    
+
     return SizedBox(
       height: sizedBoxHeight,
     );

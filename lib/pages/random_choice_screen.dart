@@ -3,8 +3,15 @@ import 'package:no_name_app/widget/nav/navi.dart';
 import 'dart:async';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
+class WheelScreen extends StatefulWidget {
+  WheelScreen({Key? key}) : super(key: key);
 
-class WheelScreen extends StatelessWidget {
+  @override
+  _WheelScreenState createState() => _WheelScreenState();
+}
+
+class _WheelScreenState extends State<WheelScreen> {
+
   @override
   Widget build(BuildContext context) {
     var randomWheel = RandomWheel().build(context);
@@ -19,16 +26,14 @@ class WheelScreen extends StatelessWidget {
   }
 }
 
-
-
 class Wheel {
   Wheel._();
 
   static const String _fontFamily = 'wheel';
 
-  static const IconData wheel_lucky_game_svgrepo_com = IconData(0xe900, fontFamily: _fontFamily);
+  static const IconData wheel_lucky_game_svgrepo_com =
+      IconData(0xe900, fontFamily: _fontFamily);
 }
-
 
 class RandomWheel {
   final StreamController<int> controller = StreamController<int>();
@@ -36,7 +41,7 @@ class RandomWheel {
   RandomWheel({Key? key});
 
   Widget build(BuildContext context) {
-    var randomItems = generateRandomItems();  // Method to generate random items
+    var randomItems = generateRandomItems(); // Method to generate random items
 
     return FortuneWheel(
       physics: CircularPanPhysics(
