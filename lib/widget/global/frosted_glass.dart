@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-class FrostedGlassBox extends StatelessWidget {
-  const FrostedGlassBox(
-      {Key? key,
-      required this.boxWidth,
-      required this.boxHeight,
-      required this.boxChild})
-      : super(key: key);
+class FrostedGlass extends StatelessWidget {
+  final double? width;
+  final double height;
+  final Widget? frostedChild;
 
-  final double? boxWidth;
-  final double? boxHeight;
-  final boxChild;
+  const FrostedGlass({
+    Key? key,
+    required this.height,
+    this.width,
+    this.frostedChild,
+  })  :
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
     return ClipRRect(
       borderRadius: BorderRadius.circular(30),
       child: Container(
-        width: boxWidth,
-        height: boxHeight,
-        color: Colors.transparent,
+        height: height,
+        width: width ?? deviceWidth,
+        color: Colors.transparent, // ... make sure this is transparent
         child: Stack(
           children: [
+            // blur effect
             BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: 4.0, // SigmaX = Horizontal Blur
-                sigmaY: 4.0, // SigmaY = Vertical Blur
-              ),
+              filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
               child: Container(),
             ),
+            // gradient effect
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(color: Colors.white),
+                border: Border.all(color: Colors.white.withOpacity(0.13)),
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
-                  end: Alignment.topRight,
+                  end: Alignment.bottomRight,
                   colors: [
                     Colors.white.withOpacity(0.15),
                     Colors.white.withOpacity(0.05),
@@ -44,7 +45,10 @@ class FrostedGlassBox extends StatelessWidget {
                 ),
               ),
             ),
-            Center(child: boxChild,)
+            // child
+            Center(
+              child: frostedChild,
+            ),
           ],
         ),
       ),

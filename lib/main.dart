@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:no_name_app/pages/home_screen.dart';
 import 'package:no_name_app/pages/login_screen.dart';
 import 'package:no_name_app/pages/questions_screen.dart';
+import 'package:no_name_app/pages/settings_screen.dart';
 import 'pages/splash_screen.dart';
 import 'package:no_name_app/pages/favorites/favorite_list.dart';
 import 'package:no_name_app/pages/favorites/favorite_list_models.dart';
@@ -61,6 +62,8 @@ class MyApp extends StatelessWidget {
           '/homeScreen' : (context) => HomeScreen(),
           '/questionScreen' :(context) => QuestionScreen(),
           '/favoritePage': (context) => const FavoritePage(),
+          '/settingsScreen': (context) => SettingsScreen(),
+          '/loginScreen' : (context) => LoginScreen(),
           // 'loginScreen' : (context) => LoginScreen(deviceHeight: deviceHeight, deviceWidth: deviceWidth)
 
         },

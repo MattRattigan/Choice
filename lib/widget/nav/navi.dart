@@ -66,9 +66,9 @@ class NaviBar {
               icon: Icons.settings,
               text: 'Settings',
               onPressed: () {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(builder: (context) => SettingsScreen()),
+                  '/settingsScreen',
                 );
               },
             ),

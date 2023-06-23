@@ -42,7 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
     return Scaffold(
-      appBar: CustomAppBar(bgColor: Colors.black,),
+      appBar: CustomAppBar(
+        bgColor: Colors.black,
+      ),
       bottomNavigationBar: navi.customGnav(context: context),
       backgroundColor: Colors.white,
       body: Stack(
@@ -54,13 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ElevatedButton(
               child: Text('Go to Login'),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LoginScreen(
-                              deviceHeight: _deviceHeight,
-                              deviceWidth: _deviceWidth,
-                            )));
+                Navigator.pushNamed(
+                  context,
+                  '/loginScreen',
+                );
               },
             ),
           )
@@ -132,7 +131,7 @@ class HorizontalList extends StatelessWidget {
         itemBuilder: (context, index) {
           return Container(
             width: 200.0,
-            color: Colors.blue[(index+1)*100],
+            color: Colors.blue[(index + 1) * 100],
             child: Center(
               child: Text(
                 'Item $index',
