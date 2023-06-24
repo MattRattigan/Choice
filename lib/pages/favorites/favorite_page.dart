@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:no_name_app/pages/favorites/favorite_page_models.dart';
+import 'package:no_name_app/widget/global/base.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:provider/provider.dart';
 
@@ -8,18 +9,11 @@ class FavoritePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NaviBar navi = NaviBar();
-    return Scaffold(
-      bottomNavigationBar: navi.customGnav(context: context),
-      appBar: AppBar(
-        title: Text(
-          'Favorite Page',
-          style: Theme.of(context).textTheme.displayLarge,
-        ),
-      ),
+    return BasePage(
+      bottomNavigationBar: NaviBar(),
       body: Container(
         color: Colors.white,
-        child:  Column(
+        child: Column(
           children: [
             Expanded(
               child: Padding(
@@ -37,7 +31,6 @@ class FavoritePage extends StatelessWidget {
 class _favoritePageList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // NaviBar navi = NaviBar();
     var itemNameStyle = Theme.of(context).textTheme.titleLarge;
     var favoritepage = context.watch<FavoritePageModel>();
 
@@ -66,3 +59,4 @@ class _favoritePageList extends StatelessWidget {
     );
   }
 }
+

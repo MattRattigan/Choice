@@ -28,13 +28,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    NaviBar navi = NaviBar();
     return Theme(
       data: ThemeData(
         brightness: _getBrightness(),
       ),
       child: Scaffold(
-        bottomNavigationBar: navi.customGnav(context: context),
+        bottomNavigationBar: NaviBar(),
         backgroundColor: _dark ? null : Colors.grey.shade200,
         appBar: AppBar(
           elevation: 0,

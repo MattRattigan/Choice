@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:no_name_app/widget/global/base.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'dart:async';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
@@ -15,12 +16,8 @@ class _WheelScreenState extends State<WheelScreen> {
   @override
   Widget build(BuildContext context) {
     var randomWheel = RandomWheel().build(context);
-    NaviBar navi = NaviBar();
-    return Scaffold(
-      bottomNavigationBar: navi.customGnav(context: context),
-      appBar: AppBar(
-        title: Text('Question Screen'),
-      ),
+    return BasePage(
+      bottomNavigationBar: NaviBar(),
       body: Center(child: randomWheel),
     );
   }

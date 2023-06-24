@@ -1,35 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:no_name_app/widget/global/frosted_glass.dart';
-import 'package:no_name_app/widget/nav/navi.dart';
-
-
-
-// class LoginScreen extends StatelessWidget {
-//   final double? _deviceHeight, _deviceWidth;
-//   const LoginScreen(
-//       {Key? key, required double deviceHeight, required double deviceWidth})
-//       : _deviceHeight = deviceHeight,
-//         _deviceWidth = deviceWidth,
-//         super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold(
-//       appBar: CustomAppBar(),
-//       body: Center(
-//         child: FrostedGlassBox(
-//           boxWidth: 200.0,
-//           boxHeight: 200.0,
-//           boxChild: Text(
-//             "hello world",
-//             style: TextStyle(color: Colors.white54, fontSize: 30.0),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+// import 'package:no_name_app/widget/nav/navi.dart';
 
 
 
@@ -44,10 +16,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    NaviBar navi = NaviBar();
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: navi.customGnav(context: context),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -62,13 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
             FrostedGlass(
               height: 600.00,
               width: MediaQuery.of(context).size.width,
-              // frostedChild: const Text(
-              //   'Hello World!',
-              //   style: TextStyle(
-              //     color: Colors.white54,
-              //     fontSize: 30.0,
-              //   ),
-              // ),
             ),
             loginColumn()
           ],

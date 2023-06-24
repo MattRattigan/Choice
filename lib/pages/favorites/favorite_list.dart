@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:no_name_app/pages/favorites/favorite_list_models.dart';
 import 'package:no_name_app/pages/favorites/favorite_page_models.dart';
+import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:provider/provider.dart';
 
 class FavoriteList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: NaviBar(),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             title: Text(
-              'favorite',
+              'Favorite',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             floating: true,
@@ -68,17 +70,18 @@ class _MyListItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
+                  Flexible(
                     child: Text(
                       item.name,
                       style: textTheme,
                     ),
                   ),
-                  Text(
-                    item.desc,
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                  Flexible(
+                    child: Text(
+                      item.desc,
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  )
                 ],
               ),
             ),

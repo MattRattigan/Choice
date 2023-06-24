@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:no_name_app/widget/global/app_bar.dart';
-import 'package:no_name_app/widget/global/buttons.dart';
+import 'package:no_name_app/widget/global/base.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:no_name_app/widget/global/custom_dropdown_button.dart';
-
 
 class QuestionScreen extends StatefulWidget {
   QuestionScreen({Key? key}) : super(key: key);
@@ -15,8 +13,6 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   late double _deviceHeight, _deviceWidth;
 
-
-
   @override
   void initState() {
     super.initState();
@@ -24,16 +20,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    NaviBar navi = NaviBar();
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      bottomNavigationBar: navi.customGnav(context: context),
-      appBar: AppBar(
-        title: CustomAppBar(),
-      ),
-      body: SafeArea(
-        child: Container(
+    return BasePage(bottomNavigationBar: NaviBar(), body: Container(
           height: _deviceHeight,
           width: _deviceWidth,
           padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.05),
@@ -53,9 +42,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
               ),
             ],
           ),
-        ),
-      ),
-    );
+        ),);
   }
 
   Widget _astroImageWidget() {

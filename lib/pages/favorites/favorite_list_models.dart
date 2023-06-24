@@ -13,16 +13,16 @@ class FavoriteListModel {
   ];
 
   static List<String> itemDesc = [
-    "some app for any developer",
-    "some app for any developer",
-    "some app for any developer",
-    "some app for any developer",
-    "some app for any developer",
-    "some app for any developer",
-    "some app for any developer",
-    "some app for any developer",
-    "some app for any developer",
-    "some app for any developer",
+    "A world-renowned American fast-food chain known for its hamburgers, cheeseburgers, and french fries. It also features chicken products, breakfast items, soft drinks, milkshakes, and desserts.",
+    "An American fast-casual restaurant chain focused on hamburgers, hot dogs, and French fries, with a strong emphasis on customizable, made-to-order food.",
+    "A fast-food restaurant chain serving American Chinese cuisine. Menu items include Orange Chicken, Kung Pao Chicken, and Beijing Beef.",
+    "An American gourmet burger chain focused on all-natural, free-range beef without steroids, antibiotics, and growth hormones. They also offer vegetarian options.",
+    "An American casual dining restaurant chain that specializes in seafood, including lobster, shrimp, fish, crab, and mollusks.",
+    "Known for its catchphrase \"Pizza! Pizza!\", Little Caesars is an international fast-food chain that specializes in pizza.",
+    "A sports bar and restaurant chain that offers comfort food, draft beer, and a casual, rustic atmosphere. Known for their 'scenic views'.",
+    " A local restaurant serving traditional Salvadoran cuisine, including pupusas, yuca frita, and other Central American specialties.",
+    "Formerly known as Miami Subs, this restaurant serves a mix of everything from cheesesteaks to wings, gyros, burgers, and pitas. It's a combination of a fast-food restaurant and a casual dining site.",
+    "Often featuring Caribbean cuisine, Dutch Pot restaurants typically offer jerk chicken, curry goat, oxtail, and an array of island-style dishes. Please note that the specifics may vary based on location.",
   ];
 
   static List<String> itemImages = [

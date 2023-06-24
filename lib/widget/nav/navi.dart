@@ -1,82 +1,96 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:no_name_app/pages/home_screen.dart';
-import 'package:no_name_app/pages/questions_screen.dart';
+import 'package:provider/provider.dart';
 
-
-class NaviBar {
-  Container customGnav({
-    required BuildContext context,
-    Color bgColor = Colors.black,
-    Color color = Colors.white,
-    Color activeColor = Colors.white,
-    Color tabBg = Colors.grey,
-  }) {
-    if (tabBg == Colors.grey) tabBg = Colors.grey.shade800;
-    return Container(
-      color: Colors.black,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15.0,
-          vertical: 20.0,
-        ),
-        child: GNav(
-          backgroundColor: bgColor,
-          color: color,
-          activeColor: activeColor,
-          gap: 9,
-          tabBackgroundColor: tabBg,
-          duration: const Duration(milliseconds: 400),
-
-          padding: const EdgeInsets.all(16.0),
-          tabs: [
-            GButton(
-              icon: Icons.home,
-              text: 'Home',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
+class NaviBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<NaviBarModel>(
+      builder: (context, naviBarModel, child) {
+        return Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Colors.red,
+              Colors.orange,
+            ], begin: Alignment.bottomRight, end: Alignment.topLeft),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+              vertical: 20.0,
             ),
-            GButton(
-              icon: Icons.favorite_border,
-              text: 'Favorites',
-              onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  '/favoriteList',
-                );
-              },
+            child: GNav(
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[100]!,
+              haptic: true,
+              color: Colors.white,
+              activeColor: Colors.white,
+              gap: 9,
+              tabBackgroundColor: Colors.grey.shade800,
+              duration: const Duration(milliseconds: 400),
+              padding: const EdgeInsets.all(16.0),
+              tabs: [
+                GButton(
+                  icon: Icons.home,
+                  text: 'Home',
+                  onPressed: () {
+                    naviBarModel.selectedIndex = 0;
+                    Navigator.pushNamed(
+                      context,
+                      '/homeScreen',
+                    );
+                  },
+                ),
+                GButton(
+                  icon: Icons.favorite_border,
+                  text: 'Favorites',
+                  onPressed: () {
+                    naviBarModel.selectedIndex = 1;
+                    Navigator.pushNamed(
+                      context,
+                      '/favoriteList',
+                    );
+                  },
+                ),
+                GButton(
+                  icon: Icons.search,
+                  text: 'Search',
+                  onPressed: () {
+                    naviBarModel.selectedIndex = 2;
+                    Navigator.pushNamed(
+                      context,
+                      '/questionScreen',
+                    );
+                  },
+                ),
+                GButton(
+                  icon: Icons.settings,
+                  text: 'Settings',
+                  onPressed: () {
+                    naviBarModel.selectedIndex = 3;
+                    Navigator.pushNamed(
+                      context,
+                      '/settingsScreen',
+                    );
+                  },
+                ),
+              ],
+              selectedIndex: naviBarModel.selectedIndex,
             ),
-            GButton(
-              icon: Icons.search,
-              text: 'Search',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QuestionScreen()),
-                );
-              },
-            ),
-            GButton(
-              icon: Icons.settings,
-              text: 'Settings',
-              onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  '/settingsScreen',
-                );
-              },
-            ),
-          ],
-        
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
 
-//          selectedIndex: _selectedIndex,
-//          onTabChange: updateIndex,
+class NaviBarModel extends ChangeNotifier {
+  int _selectedIndex = 0;
+
+  int get selectedIndex => _selectedIndex;
+
+  set selectedIndex(int index) {
+    _selectedIndex = index;
+    notifyListeners();
+  }
+}

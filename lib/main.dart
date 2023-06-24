@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:no_name_app/pages/home_screen.dart';
 import 'package:no_name_app/pages/login_screen.dart';
 import 'package:no_name_app/pages/questions_screen.dart';
+import 'package:no_name_app/pages/random_choice_screen.dart';
 import 'package:no_name_app/pages/settings_screen.dart';
+import 'package:no_name_app/widget/nav/navi.dart';
 import 'pages/splash_screen.dart';
 import 'package:no_name_app/pages/favorites/favorite_list.dart';
 import 'package:no_name_app/pages/favorites/favorite_list_models.dart';
@@ -10,27 +12,6 @@ import 'package:no_name_app/pages/favorites/favorite_page.dart';
 import 'package:no_name_app/pages/favorites/favorite_page_models.dart';
 import 'package:no_name_app/pages/favorites/theme.dart';
 import 'package:provider/provider.dart';
-
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'App Navigation',
-//       theme: ThemeData(
-//         brightness: Brightness.dark,
-//         hoverColor: Colors.amber,
-//       ),
-//       home: SplashScreen(),
-//     );
-//   }
-// }
-
-
 
 void main() => runApp(const MyApp());
 
@@ -51,7 +32,8 @@ class MyApp extends StatelessWidget {
             favoritePage.favoritelist = favoriteList;
             return favoritePage;
           },
-        )
+        ),
+        ChangeNotifierProvider(create: (context) => NaviBarModel()), // Add this line
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -62,10 +44,9 @@ class MyApp extends StatelessWidget {
           '/homeScreen' : (context) => HomeScreen(),
           '/questionScreen' :(context) => QuestionScreen(),
           '/favoritePage': (context) => const FavoritePage(),
-          '/settingsScreen': (context) => SettingsScreen(),
-          '/loginScreen' : (context) => LoginScreen(),
-          // 'loginScreen' : (context) => LoginScreen(deviceHeight: deviceHeight, deviceWidth: deviceWidth)
-
+          '/settingsScreen': (context) => const SettingsScreen(),
+          '/loginScreen' : (context) => const LoginScreen(),
+          '/randomChoiceScreen' : (context) => WheelScreen(),
         },
         home: SplashScreen(),
       ),

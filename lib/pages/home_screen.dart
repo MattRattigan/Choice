@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:no_name_app/pages/login_screen.dart';
-import 'package:no_name_app/pages/random_choice_screen.dart';
+import 'package:no_name_app/widget/global/base.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:no_name_app/widget/global/app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -31,27 +28,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    NaviBar navi = NaviBar();
-
-    FractionallySizedBox wheelIconBox = FractionallySizedBox(
-      widthFactor: _deviceWidth,
-      heightFactor: .90,
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: randomWheelBtn(),
-      ),
-    );
-    return Scaffold(
-      appBar: CustomAppBar(
-        bgColor: Colors.black,
-      ),
-      bottomNavigationBar: navi.customGnav(context: context),
-      backgroundColor: Colors.white,
+    return BasePage(
+      bottomNavigationBar: NaviBar(),
       body: Stack(
         children: <Widget>[
           _displayMap(),
           homeSelection(),
-          wheelIconBox,
+          // wheelIconBox,
           Center(
             child: ElevatedButton(
               child: Text('Go to Login'),
@@ -100,22 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  Material randomWheelBtn() {
-    return Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Colors.blue,
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => WheelScreen()));
-        },
-        child:
-            SvgPicture.asset('assets/images/wheel.svg', width: 24, height: 24),
-      ),
-    );
-  }
 }
 
 class HorizontalList extends StatelessWidget {
@@ -133,9 +100,7 @@ class HorizontalList extends StatelessWidget {
             width: 200.0,
             color: Colors.blue[(index + 1) * 100],
             child: Center(
-              child: Text(
-                'Item $index',
-                style: const TextStyle(fontSize: 24, color: Colors.white),
+              child: Image(image: AssetImage('assets/images/favorite_image/twin_peaks_img.jpg'),
               ),
             ),
           );
