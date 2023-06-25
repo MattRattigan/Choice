@@ -18,7 +18,7 @@ class _WheelScreenState extends State<WheelScreen> {
     var randomWheel = RandomWheel().build(context);
     return BasePage(
       bottomNavigationBar: NaviBar(),
-      body: Center(child: randomWheel),
+      body: Container(child: Center(child: randomWheel), color: Colors.amber.shade100,),
     );
   }
 }

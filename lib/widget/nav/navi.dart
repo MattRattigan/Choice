@@ -20,13 +20,13 @@ class NaviBar extends StatelessWidget {
               vertical: 20.0,
             ),
             child: GNav(
-              rippleColor: Colors.grey[300]!,
-              hoverColor: Colors.grey[100]!,
+              rippleColor: Colors.orange[300]!,
+              hoverColor: Colors.amber[100]!,
               haptic: true,
               color: Colors.white,
               activeColor: Colors.white,
               gap: 9,
-              tabBackgroundColor: Colors.grey.shade800,
+              tabBackgroundColor: Colors.amber.shade500,
               duration: const Duration(milliseconds: 400),
               padding: const EdgeInsets.all(16.0),
               tabs: [

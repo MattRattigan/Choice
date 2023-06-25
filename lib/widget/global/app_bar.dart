@@ -8,7 +8,7 @@ class TestingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 2,
       child: Scaffold(
         body: CustomScrollView(
           slivers: [
@@ -17,9 +17,9 @@ class TestingPage extends StatelessWidget {
               child: TabBarView(
                 children: [
                   Icon(Icons.home),
-                  Icon(Icons.abc),
-                  Icon(Icons.cabin),
-                  Icon(Icons.holiday_village),
+                  // Icon(Icons.abc),
+                  Icon(Icons.notification_add_outlined),
+                  // Icon(Icons.holiday_village),
                 ],
               ),
             ),
@@ -34,6 +34,7 @@ class CustomSliverBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      toolbarHeight: kToolbarHeight - 25 ,
       title: const DeviceText(
         text: "Choice",
         fontSize: 24,
@@ -43,16 +44,7 @@ class CustomSliverBar extends StatelessWidget {
         icon: const Icon(Icons.menu),
         onPressed: () => print("Hello World"),
       ),
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.notifications_none),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: const Icon(Icons.search),
-          onPressed: () {},
-        ),
-      ],
+      actions: const<Widget>[],
       backgroundColor: Colors.orange,
       elevation: 20,
       flexibleSpace: Container(
@@ -68,18 +60,30 @@ class CustomSliverBar extends StatelessWidget {
         indicatorWeight: 5,
         tabs: [
           GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, '/randomChoiceScreen');
-              },
-              child: Tab(
-                  icon: SvgPicture.asset('assets/images/wheel.svg',
-                      width: 26, height: 26),
-                  text: "Wheel")),
+            onTap: () {
+              Navigator.pushNamed(context, '/randomChoiceScreen');
+            },
+            child: Tab(
+              icon: SizedBox(
+                height: 24,
+                width: 24,
+                child: SvgPicture.asset('assets/images/wheel.svg'),
+              ),
+              text: "Wheel",
+            ),
+          ),
           Tab(icon: Icon(Icons.abc), text: "Sayonara"),
-          Tab(icon: Icon(Icons.cabin), text: "Nope"),
-          Tab(icon: Icon(Icons.holiday_village), text: "Nah Fam"),
+          // Tab(icon: Icon(Icons.cabin), text: "Nope"),
+          Tab(
+            icon: SizedBox(
+              height: 24,
+              child: Icon(Icons.notification_add_outlined),
+            ),
+            text: "Notifications",
+          ),
         ],
       ),
     );
   }
 }
+

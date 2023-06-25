@@ -34,7 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       child: Scaffold(
         bottomNavigationBar: NaviBar(),
-        backgroundColor: _dark ? null : Colors.grey.shade200,
+        backgroundColor: _dark ? null : Colors.amber.shade100,
         appBar: AppBar(
           elevation: 0,
           systemOverlayStyle:

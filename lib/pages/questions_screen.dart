@@ -23,6 +23,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
     return BasePage(bottomNavigationBar: NaviBar(), body: Container(
+      color: Colors.amber.shade100,
           height: _deviceHeight,
           width: _deviceWidth,
           padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.05),

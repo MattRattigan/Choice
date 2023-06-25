@@ -64,20 +64,10 @@ class _HomeScreenState extends State<HomeScreen> {
         width: _deviceWidth,
         height: 100,
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(30)),
         ),
         child: const ClipRRect(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
+          borderRadius: BorderRadius.all(Radius.circular(30)),
           child: HorizontalList(),
         ),
       ),
@@ -100,7 +90,9 @@ class HorizontalList extends StatelessWidget {
             width: 200.0,
             color: Colors.blue[(index + 1) * 100],
             child: Center(
-              child: Image(image: AssetImage('assets/images/favorite_image/twin_peaks_img.jpg'),
+              child: Image(
+                image: AssetImage(
+                    'assets/images/favorite_image/twin_peaks_img.jpg'),
               ),
             ),
           );
