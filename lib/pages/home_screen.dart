@@ -34,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
         children: <Widget>[
           _displayMap(),
           homeSelection(),
-          // wheelIconBox,
           Center(
             child: ElevatedButton(
               child: Text('Go to Login'),
@@ -53,7 +52,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   GoogleMap _displayMap() {
     return GoogleMap(
-        initialCameraPosition: CameraPosition(target: _center, zoom: 15.0));
+      initialCameraPosition: CameraPosition(target: _center, zoom: 15.0),
+      myLocationButtonEnabled: true,
+      myLocationEnabled: true,
+      zoomControlsEnabled: true,
+      zoomGesturesEnabled: true,
+      scrollGesturesEnabled: true, 
+      mapType: MapType.normal,
+      onMapCreated: _onMapCreated,
+    );
   }
 
   Positioned homeSelection() {

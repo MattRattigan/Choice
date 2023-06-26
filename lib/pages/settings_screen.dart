@@ -34,7 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       child: Scaffold(
         bottomNavigationBar: NaviBar(),
-        backgroundColor: _dark ? null : Colors.amber.shade100,
+        backgroundColor: _dark ? null : Colors.white,
         appBar: AppBar(
           elevation: 0,
           systemOverlayStyle:
@@ -86,7 +86,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                       ),
                       leading: CircleAvatar(
-                        backgroundColor: _dark ? Colors.blueGrey: Colors.amberAccent,
+                        backgroundColor: _dark ? Colors.blueGrey: Colors.amber.shade50,
                         backgroundImage: const AssetImage(
                             SettingsScreen.pfp1), // Creates a circular avatar image
                       ),

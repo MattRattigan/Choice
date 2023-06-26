@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:no_name_app/widget/global/frosted_glass.dart';
 // import 'package:no_name_app/widget/nav/navi.dart';
-
-
 
 class LoginScreen extends StatefulWidget {
   static const String imgBackground = 'assets/images/forest.jpg';
@@ -62,13 +60,13 @@ Widget loginColumn() {
           ],
         ),
         // TODO: Hello again!
-        Text(
+
+        const Text(
           "Hello Again!",
-          style: GoogleFonts.bebasNeue(
-            textStyle: const TextStyle(
-              fontSize: 52,
-              fontWeight: FontWeight.bold,
-            ),
+          style: TextStyle(
+            fontSize: 52,
+            fontFamily: 'Satoshi',
+            fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 10),

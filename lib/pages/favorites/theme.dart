@@ -4,7 +4,7 @@ final appTheme = ThemeData(
   primarySwatch: Colors.red,
   textTheme: const TextTheme(
     displayLarge: TextStyle(
-      fontFamily: 'Corben',
+      fontFamily: 'Satoshi',
       fontWeight: FontWeight.w700,
       fontSize: 24,
       color: Colors.white,

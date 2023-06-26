@@ -1,50 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:no_name_app/components/side_menu.dart';
+import 'package:no_name_app/widget/global/choice_theme.dart';
 import 'package:no_name_app/widget/global/text.dart';
 
-class TestingPage extends StatelessWidget {
-  const TestingPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            CustomSliverBar(),
-            const SliverFillRemaining(
-              child: TabBarView(
-                children: [
-                  Icon(Icons.home),
-                  // Icon(Icons.abc),
-                  Icon(Icons.notification_add_outlined),
-                  // Icon(Icons.holiday_village),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class CustomSliverBar extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey;
+  const CustomSliverBar(this._scaffoldKey, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      toolbarHeight: kToolbarHeight - 25 ,
+      toolbarHeight: kToolbarHeight - 25,
       title: const DeviceText(
         text: "Choice",
         fontSize: 24,
       ),
       centerTitle: true,
+      // leading: IconButton(
+      //   icon: const Icon(Icons.menu),
+      //   onPressed: () => Navigator.pushNamed(context, '/sideBar'),
+      // ),
       leading: IconButton(
         icon: const Icon(Icons.menu),
-        onPressed: () => print("Hello World"),
+        onPressed: () => _scaffoldKey.currentState?.openDrawer(),
       ),
-      actions: const<Widget>[],
+      actions: const <Widget>[],
       backgroundColor: Colors.orange,
       elevation: 20,
       flexibleSpace: Container(
@@ -72,9 +53,9 @@ class CustomSliverBar extends StatelessWidget {
               text: "Wheel",
             ),
           ),
-          Tab(icon: Icon(Icons.abc), text: "Sayonara"),
+          const Tab(icon: Icon(Icons.abc), text: "Sayonara"),
           // Tab(icon: Icon(Icons.cabin), text: "Nope"),
-          Tab(
+          const Tab(
             icon: SizedBox(
               height: 24,
               child: Icon(Icons.notification_add_outlined),
@@ -86,4 +67,3 @@ class CustomSliverBar extends StatelessWidget {
     );
   }
 }
-

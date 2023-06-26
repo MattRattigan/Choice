@@ -5,6 +5,8 @@ import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:provider/provider.dart';
 
 class FavoriteList extends StatelessWidget {
+  const FavoriteList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

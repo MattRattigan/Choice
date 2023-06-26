@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:no_name_app/components/side_menu.dart';
 import 'package:no_name_app/pages/home_screen.dart';
 import 'package:no_name_app/pages/login_screen.dart';
 import 'package:no_name_app/pages/questions_screen.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
           '/settingsScreen': (context) => const SettingsScreen(),
           '/loginScreen' : (context) => const LoginScreen(),
           '/randomChoiceScreen' : (context) => WheelScreen(),
+          '/sideBar' : (context) => const Sidebar(),
         },
         home: SplashScreen(),
       ),
