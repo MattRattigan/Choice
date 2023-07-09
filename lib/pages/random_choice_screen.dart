@@ -3,64 +3,99 @@ import 'package:no_name_app/widget/global/base.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'dart:async';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:rxdart/rxdart.dart';
 
 class WheelScreen extends StatefulWidget {
-  WheelScreen({Key? key}) : super(key: key);
+  const WheelScreen({Key? key}) : super(key: key);
 
   @override
-  _WheelScreenState createState() => _WheelScreenState();
+  State<WheelScreen> createState() => _SpinWheelState();
 }
 
-class _WheelScreenState extends State<WheelScreen> {
+TextEditingController textController = TextEditingController();
+
+class _SpinWheelState extends State<WheelScreen> {
+  final selected = BehaviorSubject<int>();
+  int rewards = 0;
+
+  List<FortuneItem> wheelItems = [
+    FortuneItem(child: Text('Item 1')),
+    FortuneItem(child: Text('Item 2')),
+    FortuneItem(child: Text('Item 3')),
+    FortuneItem(child: Text('Item 4')),
+    FortuneItem(child: Text('Item 5')),
+  ];
+
+  @override
+  void dispose() {
+    selected.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var randomWheel = RandomWheel().build(context);
     return BasePage(
       bottomNavigationBar: NaviBar(),
-      body: Container(child: Center(child: randomWheel), color: Colors.white,),
-    );
-  }
-}
-
-class Wheel {
-  Wheel._();
-
-  static const String _fontFamily = 'wheel';
-
-  static const IconData wheel_lucky_game_svgrepo_com =
-      IconData(0xe900, fontFamily: _fontFamily);
-}
-
-class RandomWheel {
-  final StreamController<int> controller = StreamController<int>();
-
-  RandomWheel({Key? key});
-
-  Widget build(BuildContext context) {
-    var randomItems = generateRandomItems(); // Method to generate random items
-
-    return FortuneWheel(
-      physics: CircularPanPhysics(
-        duration: const Duration(seconds: 1),
-        curve: Curves.decelerate,
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: textController,
+                decoration: InputDecoration(
+                  labelText: 'Add Restaurants',
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      addItemToList();
+                    },
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 300,
+              child: FortuneWheel(
+                selected: selected.stream,
+                animateFirst: false,
+                items: wheelItems,
+                onAnimationEnd: () {
+                  
+                },
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  selected.add(Fortune.randomInt(0, wheelItems.length));
+                });
+              },
+              child: Container(
+                margin: EdgeInsets.only(top: 1.0),
+                height: 40,
+                width: 120,
+                color: Colors.redAccent,
+                child: Center(
+                  child: Text("SPIN"),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-      onFling: () {
-        controller.add(1);
-      },
-      selected: controller.stream,
-      items: randomItems,
     );
   }
 
-  List<FortuneItem> generateRandomItems() {
-    // Here you can implement your logic to generate random items.
-    // For simplicity, we'll use a fixed list.
-    return const [
-      FortuneItem(child: Text('Item 1')),
-      FortuneItem(child: Text('Item 2')),
-      FortuneItem(child: Text('Item 3')),
-      FortuneItem(child: Text('Item 4')),
-    ];
+  void addItemToList() {
+    String newItem = textController.text;
+    if (newItem.isNotEmpty) {
+      setState(() {
+        wheelItems.add(FortuneItem(child: Text(newItem)));
+      });
+      textController.clear();
+    }
   }
 }

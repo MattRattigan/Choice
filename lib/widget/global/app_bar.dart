@@ -11,7 +11,7 @@ class CustomSliverBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      toolbarHeight: kToolbarHeight - 25,
+      toolbarHeight: kToolbarHeight + 2,
       title: const DeviceText(
         text: "Choice",
         fontSize: 24,
@@ -36,34 +36,7 @@ class CustomSliverBar extends StatelessWidget {
           ], begin: Alignment.bottomRight, end: Alignment.topLeft),
         ),
       ),
-      bottom: TabBar(
-        indicatorColor: Colors.amber,
-        indicatorWeight: 5,
-        tabs: [
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/randomChoiceScreen');
-            },
-            child: Tab(
-              icon: SizedBox(
-                height: 24,
-                width: 24,
-                child: SvgPicture.asset('assets/images/wheel.svg'),
-              ),
-              text: "Wheel",
-            ),
-          ),
-          const Tab(icon: Icon(Icons.abc), text: "Sayonara"),
-          // Tab(icon: Icon(Icons.cabin), text: "Nope"),
-          const Tab(
-            icon: SizedBox(
-              height: 24,
-              child: Icon(Icons.notification_add_outlined),
-            ),
-            text: "Notifications",
-          ),
-        ],
-      ),
+      
     );
   }
 }
