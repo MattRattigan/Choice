@@ -17,10 +17,6 @@ class CustomSliverBar extends StatelessWidget {
         fontSize: 24,
       ),
       centerTitle: true,
-      // leading: IconButton(
-      //   icon: const Icon(Icons.menu),
-      //   onPressed: () => Navigator.pushNamed(context, '/sideBar'),
-      // ),
       leading: IconButton(
         icon: const Icon(Icons.menu),
         onPressed: () => _scaffoldKey.currentState?.openDrawer(),
