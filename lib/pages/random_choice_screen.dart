@@ -40,6 +40,7 @@ class _SpinWheelState extends State<WheelScreen> {
   @override
 Widget build(BuildContext context) {
   return BasePage(
+    resizeToAvoidBottomInset: false,
     bottomNavigationBar: NaviBar(),
     body: Stack(
       children: [
