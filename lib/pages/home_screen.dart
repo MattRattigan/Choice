@@ -1,16 +1,23 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:no_name_app/routes/app_routing.gr.dart';
 import 'package:no_name_app/widget/global/base.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'dart:ui';
 
+import 'package:no_name_app/components/side_menu.dart' as sideDrawer;
+
+@RoutePage()
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   late double _deviceHeight, _deviceWidth;
   late GoogleMapController mapController;
   final LatLng _center = const LatLng(25.7617, -80.1918);
@@ -28,20 +35,30 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    return BasePage(
+
+    return Scaffold(
+      key: widget.scaffoldKey,
       bottomNavigationBar: NaviBar(),
+      drawer: const Drawer(child: sideDrawer.Sidebar()),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Color(0x44000000),
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {
+            widget.scaffoldKey.currentState?.openDrawer();
+          },
+        ),
+      ),
       body: Stack(
         children: <Widget>[
           _displayMap(),
-          homeSelection(),
           Center(
             child: ElevatedButton(
-              child: Text('Go to Login'),
+              child: const Text('Go to Login'),
               onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  '/loginScreen',
-                );
+                AutoRouter.of(context).push(const LoginRoute());
               },
             ),
           )
@@ -57,54 +74,9 @@ class _HomeScreenState extends State<HomeScreen> {
       myLocationEnabled: true,
       zoomControlsEnabled: true,
       zoomGesturesEnabled: true,
-      scrollGesturesEnabled: true, 
+      scrollGesturesEnabled: true,
       mapType: MapType.normal,
       onMapCreated: _onMapCreated,
-    );
-  }
-
-  Positioned homeSelection() {
-    return Positioned(
-      top: 0,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 8.0),
-        width: _deviceWidth,
-        height: 100,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-        child: const ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          child: HorizontalList(),
-        ),
-      ),
-    );
-  }
-}
-
-class HorizontalList extends StatelessWidget {
-  const HorizontalList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 20,
-        itemBuilder: (context, index) {
-          return Container(
-            width: 200.0,
-            color: Colors.blue[(index + 1) * 100],
-            child: Center(
-              child: Image(
-                image: AssetImage(
-                    'assets/images/favorite_image/twin_peaks_img.jpg'),
-              ),
-            ),
-          );
-        },
-      ),
     );
   }
 }

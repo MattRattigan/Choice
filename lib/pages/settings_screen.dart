@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 
 
-
+@RoutePage()
 class SettingsScreen extends StatefulWidget {
   static const pfp1 = 'assets/images/pic.png';
   const SettingsScreen({super.key});

@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:no_name_app/pages/favorites/favorite_list_models.dart';
 import 'package:no_name_app/pages/favorites/favorite_page_models.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:provider/provider.dart';
 
+@RoutePage()
 class FavoriteList extends StatelessWidget {
   const FavoriteList({super.key});
 

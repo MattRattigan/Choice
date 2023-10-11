@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:no_name_app/components/info_card.dart';
 import 'package:no_name_app/widget/global/custom_colors.dart';
@@ -7,6 +8,7 @@ import '../models/rive_asset.dart';
 import '../utils/rive_utils.dart';
 import 'side_menu_tile.dart';
 
+@RoutePage()
 class Sidebar extends StatefulWidget {
   const Sidebar({Key? key}) : super(key: key);
 

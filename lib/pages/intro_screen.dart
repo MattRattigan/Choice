@@ -1,7 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:no_name_app/pages/home_screen.dart';
 import 'dart:async';
 
+import 'package:no_name_app/routes/app_routing.gr.dart';
+
+@RoutePage()
 class IntroScreen extends StatefulWidget {
   @override
   _IntroScreenState createState() => _IntroScreenState();
@@ -45,10 +49,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     introWidgets.opacity4 = 1.0;
                     break;
                   case 10:
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
-                    );
+                    AutoRouter.of(context).push(HomeRoute());
                     break;
                 }
               },

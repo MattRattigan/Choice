@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:no_name_app/widget/global/base.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:no_name_app/widget/global/custom_dropdown_button.dart';
 
+@RoutePage()
 class QuestionScreen extends StatefulWidget {
   QuestionScreen({Key? key}) : super(key: key);
 
@@ -22,7 +24,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    return BasePage(bottomNavigationBar: NaviBar(), body: Container(
+    return Scaffold(bottomNavigationBar: NaviBar(), body: Container(
       color: Colors.white,
           height: _deviceHeight,
           width: _deviceWidth,
