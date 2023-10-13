@@ -4,7 +4,7 @@ abstract class BasePasswordException implements Exception {
   final String message;
 
   @override
-  String toString() => '$runtimeType: $message';
+  String toString() => message;
 }
 
 class ShortPasswordException extends BasePasswordException {
@@ -22,3 +22,5 @@ class NoUppercaseException extends BasePasswordException {
 class NoLowercaseException extends BasePasswordException {
   NoLowercaseException(String message) : super(message);
 }
+
+

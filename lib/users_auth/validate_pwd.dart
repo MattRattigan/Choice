@@ -1,16 +1,12 @@
-import 'package:no_name_app/auth/exceptions_pwd.dart';
+
+
+import 'package:no_name_app/users_auth/exceptions_pwd.dart';
 
 mixin ValidatePwd {
-  String? validateEmptyText(String? text) {
-    if (text == null || text.isEmpty) {
-      return 'Please Enter Value';
-    }
-  }
-
   void validateLength(String? password) {
-    final goodLength = RegExp(r'.{12,}');
+    final goodLength = RegExp(r'.{10,}');
     if (!password!.contains(goodLength)) {
-      throw ShortPasswordException('Password must be at least 12 characters');
+      throw ShortPasswordException('Password must be at least 10 characters');
     }
   }
 
@@ -37,13 +33,13 @@ mixin ValidatePwd {
 
   String? validatePassword(String? password) {
     try {
-      validateEmptyText(password);
       validateLength(password);
       validateLowercase(password);
       validateUppercase(password);
       validateNumber(password);
+      return null;
     } on ShortPasswordException catch (e) {
-      print("\nHello\n");
+      print("\nHello\n"); // TODO: remove this
       return e.toString();
     } on NoLowercaseException catch (e) {
       return e.toString();
@@ -52,6 +48,5 @@ mixin ValidatePwd {
     } on NoNumberException catch (e) {
       return e.toString();
     }
-    return password;
   }
 }
