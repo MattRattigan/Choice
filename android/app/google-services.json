@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "98717961407",
+    "project_id": "flutter-choice-app",
+    "storage_bucket": "flutter-choice-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98717961407:android:38c3f7ac0949a5a96aca0a",
+        "android_client_info": {
+          "package_name": "com.example.no_name_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmejyYSj9zikhZFJYfHf13B593Ey251w8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
