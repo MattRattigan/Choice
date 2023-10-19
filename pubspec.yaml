@@ -96,6 +96,7 @@ flutter:
     - assets/images/pic.png
     - assets/rive_assets/icons.riv
     - assets/rive_assets/menu_button.riv
+    - assets/images/bg_sign_login.jpg
 
 
 
