@@ -59,11 +59,9 @@ abstract class $AppRouter extends _i11.RootStackRouter {
       );
     },
     QuestionRoute.name: (routeData) {
-      final args = routeData.argsAs<QuestionRouteArgs>(
-          orElse: () => const QuestionRouteArgs());
       return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i6.QuestionScreen(key: args.key),
+        child: const _i6.QuestionScreen(),
       );
     },
     SettingsRoute.name: (routeData) {
@@ -184,31 +182,16 @@ class LoginRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.QuestionScreen]
-class QuestionRoute extends _i11.PageRouteInfo<QuestionRouteArgs> {
-  QuestionRoute({
-    _i12.Key? key,
-    List<_i11.PageRouteInfo>? children,
-  }) : super(
+class QuestionRoute extends _i11.PageRouteInfo<void> {
+  const QuestionRoute({List<_i11.PageRouteInfo>? children})
+      : super(
           QuestionRoute.name,
-          args: QuestionRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'QuestionRoute';
 
-  static const _i11.PageInfo<QuestionRouteArgs> page =
-      _i11.PageInfo<QuestionRouteArgs>(name);
-}
-
-class QuestionRouteArgs {
-  const QuestionRouteArgs({this.key});
-
-  final _i12.Key? key;
-
-  @override
-  String toString() {
-    return 'QuestionRouteArgs{key: $key}';
-  }
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for

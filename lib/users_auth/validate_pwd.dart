@@ -1,5 +1,3 @@
-
-
 import 'package:no_name_app/users_auth/exceptions_pwd.dart';
 
 mixin ValidatePwd {
@@ -39,7 +37,6 @@ mixin ValidatePwd {
       validateNumber(password);
       return null;
     } on ShortPasswordException catch (e) {
-      print("\nHello\n"); // TODO: remove this
       return e.toString();
     } on NoLowercaseException catch (e) {
       return e.toString();
@@ -49,4 +46,22 @@ mixin ValidatePwd {
       return e.toString();
     }
   }
+
+
+  // String? valPwd(String? password) {
+  //   // TODO: Try this and see if it if no error in validation
+  //   try {
+  //     validateLength(password);
+  //     validateLowercase(password);
+  //     validateUppercase(password);
+  //     validateNumber(password);
+  //     return null;
+  //   } catch (e) {
+  //     if (e is BasePasswordException) {
+  //       return e.toString();
+  //     } else {
+  //       return null;
+  //     }
+  //   }
+  // }
 }
