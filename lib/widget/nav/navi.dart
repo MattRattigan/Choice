@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:no_name_app/routes/app_routing.gr.dart';
 
 class NaviBar extends StatelessWidget {
+  const NaviBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<NaviBarModel>(
@@ -54,7 +56,7 @@ class NaviBar extends StatelessWidget {
                   text: 'Search',
                   onPressed: () {
                     naviBarModel.selectedIndex = 2;
-                    AutoRouter.of(context).push(QuestionRoute());
+                    AutoRouter.of(context).push(const QuestionRoute());
                   },
                 ),
                 GButton(

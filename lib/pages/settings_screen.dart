@@ -34,7 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         brightness: _getBrightness(),
       ),
       child: Scaffold(
-        bottomNavigationBar: NaviBar(),
+        bottomNavigationBar: const NaviBar(),
         backgroundColor: _dark ? null : Colors.white,
         appBar: AppBar(
           elevation: 0,
@@ -123,7 +123,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         _buildDivider(),
                         ListTile(
                           leading: const Icon(FontAwesomeIcons.language),
-                          title: Text('Choose Language'),
+                          title: const Text('Choose Language'),
                           trailing: const Icon(Icons.keyboard_arrow_right),
                           onTap: () {
                             // TODO: open change location
@@ -132,7 +132,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         _buildDivider(),
                         ListTile(
                           leading: const Icon(Icons.location_on),
-                          title: Text("Change Location"),
+                          title: const Text("Change Location"),
                           trailing: const Icon(Icons.keyboard_arrow_right),
                           onTap: () {
                             // TODO: open change location

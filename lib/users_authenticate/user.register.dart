@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:no_name_app/user_model/users.dart';
 import 'package:no_name_app/users_authenticate/user_anonymous.dart';

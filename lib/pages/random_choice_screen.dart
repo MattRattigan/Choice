@@ -7,7 +7,7 @@ import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
 @RoutePage()
 class WheelScreen extends StatefulWidget {
-  WheelScreen({Key? key}) : super(key: key);
+  const WheelScreen({Key? key}) : super(key: key);
 
   @override
   _WheelScreenState createState() => _WheelScreenState();
@@ -19,8 +19,8 @@ class _WheelScreenState extends State<WheelScreen> {
   Widget build(BuildContext context) {
     var randomWheel = RandomWheel().build(context);
     return BasePage(
-      bottomNavigationBar: NaviBar(),
-      body: Container(child: Center(child: randomWheel), color: Colors.white,),
+      bottomNavigationBar: const NaviBar(),
+      body: Container(color: Colors.white,child: Center(child: randomWheel),),
     );
   }
 }

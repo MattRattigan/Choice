@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:no_name_app/components/side_menu.dart';
-import 'package:no_name_app/widget/global/choice_theme.dart';
 import 'package:no_name_app/widget/global/text.dart';
 
 
