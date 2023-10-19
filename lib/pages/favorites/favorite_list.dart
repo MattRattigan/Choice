@@ -12,7 +12,7 @@ class FavoriteList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: NaviBar(),
+      bottomNavigationBar: const NaviBar(),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -83,7 +83,7 @@ class _MyListItem extends StatelessWidget {
                   Flexible(
                     child: Text(
                       item.desc,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   )
                 ],

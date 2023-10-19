@@ -12,7 +12,7 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      bottomNavigationBar: NaviBar(),
+      bottomNavigationBar: const NaviBar(),
       body: Container(
         color: Colors.white,
         child: Column(

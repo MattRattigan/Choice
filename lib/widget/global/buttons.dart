@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class DeviceButton extends StatelessWidget {
   final String? _btnText;
 
-  DeviceButton({String? btnText, Key? key})
+  const DeviceButton({String? btnText, Key? key})
       : _btnText = btnText,
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 100, // specify the width
       height: 40, // specify the height
       child: FloatingActionButton.extended(

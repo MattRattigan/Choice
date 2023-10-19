@@ -1,18 +1,19 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:no_name_app/pages/home_screen.dart';
 import 'dart:async';
 
 import 'package:no_name_app/routes/app_routing.gr.dart';
 
 @RoutePage()
 class IntroScreen extends StatefulWidget {
+  const IntroScreen({super.key});
+
   @override
   _IntroScreenState createState() => _IntroScreenState();
 }
 
 class _IntroScreenState extends State<IntroScreen> {
-  List<Timer> _timers = [];
+  final List<Timer> _timers = [];
   late double _deviceHeight, _deviceWidth;
   IntroWidgets introWidgets = IntroWidgets();
 
@@ -123,7 +124,7 @@ class Welcome {
   }) {
     return AnimatedOpacity(
       opacity: opacity,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +133,7 @@ class Welcome {
             child: Text(
               text,
               style: TextStyle(
-                color: Color.fromRGBO(255, 255, 255, 1),
+                color: const Color.fromRGBO(255, 255, 255, 1),
                 fontFamily: 'Roboto',
                 fontSize: fontSize,
                 letterSpacing: 0,

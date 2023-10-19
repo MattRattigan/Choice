@@ -46,9 +46,9 @@ class ChoiceMenuIcon extends StatelessWidget {
         Positioned(
           width: 288,
           height: MediaQuery.of(context).size.height,
-          child: Sidebar(),
+          child: const Sidebar(),
         ),
-        Transform.translate(offset: Offset(288, 0),)
+        Transform.translate(offset: const Offset(288, 0),)
       ],
     );
   }

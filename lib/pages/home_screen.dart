@@ -34,7 +34,7 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: widget.scaffoldKey,
-      bottomNavigationBar: NaviBar(),
+      bottomNavigationBar: const NaviBar(),
       drawer: const Drawer(child: side_drawer.Sidebar()),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
