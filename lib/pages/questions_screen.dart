@@ -1,19 +1,19 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:no_name_app/widget/global/custom_dropdown_button.dart';
 
-
 @RoutePage()
-class QuestionScreen extends StatefulWidget {
+class QuestionScreen extends ConsumerStatefulWidget {
   const QuestionScreen({Key? key}) : super(key: key);
 
   @override
-  QuestionScreenState createState() => QuestionScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _QuestionScreenState();
 }
 
-class QuestionScreenState extends State<QuestionScreen> {
+class _QuestionScreenState extends ConsumerState<QuestionScreen> {
   late double _deviceHeight, _deviceWidth;
 
   @override
@@ -25,8 +25,9 @@ class QuestionScreenState extends State<QuestionScreen> {
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      bottomNavigationBar: NaviBar(),
+      bottomNavigationBar: const NaviBar(),
       body: Container(
         color: Colors.white,
         height: _deviceHeight,
@@ -94,24 +95,4 @@ class QuestionScreenState extends State<QuestionScreen> {
 }
 
 
-                  // User? result = await _auth.signInAnonymously();
-                  // if (result == null) {
-                  //   print("Error signing in");
-                  // } else {
-                  //   print('Signed in');
-                  //   print(result);
-                  // }
-
-
-// storage.writeToStorage(
-//                         key: result.uid, value: result.uid);
-//                     final stateController =
-//                         container.read(tempProvider.notifier);
-//                     stateController.state = result.uid;
-
-
-                // onPressed: () async {
-                //   final value = container.read(tempProvider);
-                //   final userMeta = await storage.readFromStroage(key: value);
-                //   print("\n$userMeta\n");
-                // },
+                

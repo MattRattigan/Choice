@@ -1,8 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:no_name_app/pages/home_screen.dart';
+import 'package:no_name_app/providers/choice_providers.dart';
+import 'package:no_name_app/routes/app_routing.gr.dart';
+import 'package:no_name_app/user_storage/local_storage.dart';
 import 'package:no_name_app/users_auth/validate_email.dart';
 import 'package:no_name_app/users_auth/validate_pwd.dart';
-import 'package:no_name_app/users_authenticate/user_sign_in.dart';
+import 'package:no_name_app/users_authenticate/user.register.dart';
 import 'package:no_name_app/widget/global/frosted_glass.dart';
 import 'package:no_name_app/users_auth/form_validation.dart';
 
@@ -13,25 +17,25 @@ import 'dart:ui' as ui;
 
 final textProvider = StateProvider<String>((ref) => '');
 
-
 final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
 @RoutePage()
-class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends ConsumerStatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => LoginPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => RegisterPageState();
 }
 
-class LoginPageState extends ConsumerState<LoginScreen>
+class RegisterPageState extends ConsumerState<RegisterScreen>
     with
         SingleTickerProviderStateMixin,
         FormHandler,
         ValidateEmail,
         ValidatePwd {
   AnimationController? _controller;
-  final _userSignin = ChoiceSignIn();
+  final _userRegister = ChoiceRegister();
+  final _storage = LocalStorage();
 
   @override
   void initState() {
@@ -56,6 +60,8 @@ class LoginPageState extends ConsumerState<LoginScreen>
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
     final deviceHeight = MediaQuery.of(context).size.height;
+    final classRef = ref.watch(userClassProvider);
+    final ctx = context;
 
     var size = MediaQuery.of(context).size;
     return Scaffold(
@@ -110,6 +116,10 @@ class LoginPageState extends ConsumerState<LoginScreen>
                       key: formKey,
                       child: Column(
                         children: [
+                          IconButton(
+                              alignment: Alignment.bottomLeft,
+                              onPressed: () => context.router.pop(),
+                              icon: const Icon(Icons.arrow_back_ios_new)),
                           const Padding(
                             padding: EdgeInsets.only(top: 16.0),
                             child: Icon(Icons.flutter_dash, size: 75),
@@ -141,12 +151,27 @@ class LoginPageState extends ConsumerState<LoginScreen>
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25.0),
                             child: ElevatedButton(
-                              onPressed: () {
-                                handleSignIn(_userSignin, formKey);
+                              onPressed: () async {
+                                final handler = await handleRegister(
+                                    _userRegister, formKey);
+                                ref
+                                    .read(userClassProvider.notifier)
+                                    .update((state) => handler);
+
+                                _storage.saveUser(handler!);
+
+                                // Status of Login
+                                ref.read(loginStatusProvider.notifier).state =
+                                    LoginStatus.loggedIn;
+
+                                // Push to da screen
+                                if (mounted) {
+                                  ctx.router.push(HomeRoute());
+                                }
                               },
                               style: buttonStyle,
                               child: Text(
-                                "Sign In",
+                                "Register",
                                 textAlign: TextAlign.center,
                                 style: textStyle,
                               ),
@@ -232,4 +257,3 @@ class DrawClip extends CustomClipper<Path> {
     return true;
   }
 }
-

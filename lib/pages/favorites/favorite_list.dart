@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:no_name_app/pages/favorites/favorite_list_models.dart';
 import 'package:no_name_app/pages/favorites/favorite_page_models.dart';
+import 'package:no_name_app/routes/app_routing.gr.dart';
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +25,7 @@ class FavoriteList extends StatelessWidget {
             actions: [
               IconButton(
                 icon: const Icon(Icons.favorite_border),
-                onPressed: () => Navigator.pushNamed(context, '/favoritePage'),
+                onPressed: () => context.router.push(const FavoriteRoute()),
               ),
             ],
           ),
