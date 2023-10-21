@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:no_name_app/routes/app_routing.gr.dart';
+import 'package:no_name_app/routes/guard/auth_guard.dart';
 
 // part 'app_router.gr.dart';
 
@@ -10,6 +11,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: SplashRoute.page, initial: true),
         AutoRoute(page: FavoriteRoute.page),
         AutoRoute(page: IntroRoute.page),
+        // AutoRoute(page: LoginRoute.page, guards: [AuthGuard()]),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: Sidebar.page),
         AutoRoute(page: WheelRoute.page),
@@ -17,6 +19,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: FavoriteList.page),
         AutoRoute(page: QuestionRoute.page),
         AutoRoute(page: SettingsRoute.page),
+        AutoRoute(page: RegisterRoute.page),
       ];
 }
 

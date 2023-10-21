@@ -4,13 +4,12 @@ import 'package:no_name_app/user_model/users.dart';
 import 'package:no_name_app/users_authenticate/user.register.dart';
 import 'package:no_name_app/users_authenticate/user_sign_in.dart';
 
-
-mixin FormHandler <T extends ConsumerStatefulWidget> on ConsumerState<T> {
+mixin FormHandler<T extends ConsumerStatefulWidget> on ConsumerState<T> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwdController = TextEditingController();
   // final _formKey = GlobalKey<FormState>();
 
-    String? error;
+  String? error;
   ChoiceUser? result;
   bool loading = false;
 
@@ -62,7 +61,8 @@ mixin FormHandler <T extends ConsumerStatefulWidget> on ConsumerState<T> {
     );
   }
 
-    Future<void> handleRegister(ChoiceRegister userRegister, GlobalKey<FormState> formKey) async {
+  Future<ChoiceUser?> handleRegister(
+      ChoiceRegister userRegister, GlobalKey<FormState> formKey) async {
     setState(() {
       loading = true;
     });
@@ -76,24 +76,31 @@ mixin FormHandler <T extends ConsumerStatefulWidget> on ConsumerState<T> {
         error = 'please supply a valid email';
         loading = false;
       });
+      return null;
+    } else {
+      return Future.value(result);
     }
   }
 
-
-   Future<void> handleSignIn(ChoiceSignIn userSignin, GlobalKey<FormState> formKey) async {
-  if (formKey.currentState!.validate()) {
-    setState(() {
-      loading = true;
-    });
-    result = await userSignin.signInWithEmailAndPassword(
-        email: _emailController.text, password: _pwdController.text);
-    await Future.delayed(const Duration(seconds: 2));
-    if (result == null) {
+  Future<void> handleSignIn(
+      ChoiceSignIn userSignin, GlobalKey<FormState> formKey) async {
+    if (formKey.currentState!.validate()) {
       setState(() {
-        error = 'Could not sign in with those credentials';
-        loading = false;
+        loading = true;
       });
+      result = await userSignin.signInWithEmailAndPassword(
+          email: _emailController.text, password: _pwdController.text);
+      await Future.delayed(const Duration(seconds: 2));
+      if (result == null) {
+        setState(() {
+          error = 'Could not sign in with those credentials';
+          loading = false;
+        });
+      }
     }
   }
 }
-}
+
+
+// popcorn1@example.com
+// Popcorn96_pop
