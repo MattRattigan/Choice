@@ -1,11 +1,27 @@
 import 'package:auto_route/auto_route.dart';
 
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:no_name_app/providers/choice_providers.dart';
 import 'package:no_name_app/routes/app_routing.gr.dart';
 
 import 'package:no_name_app/widget/nav/navi.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:no_name_app/components/side_menu.dart' as side_drawer;
+
+enum LoginStatus {
+  register('Register Now!'),
+  signUp('Sign Up!'),
+  loggedIn('');
+
+  const LoginStatus(this.message);
+  final String message;
+}
+
+
+
+
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -17,7 +33,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-
   late GoogleMapController mapController;
   final LatLng _center = const LatLng(25.7617, -80.1918);
 
@@ -50,14 +65,33 @@ class HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: <Widget>[
           _displayMap(),
-          Center(
-            child: ElevatedButton(
-              child: const Text('Go to Login'),
-              onPressed: () {
-                AutoRouter.of(context).push(const LoginRoute());
-              },
-            ),
-          )
+          Consumer(
+            builder: (context, ref, child) {
+              final value = ref.watch(loginStatusProvider .notifier).state;
+              switch (value) {
+                case LoginStatus.loggedIn:
+                  return const SizedBox.shrink();
+                case LoginStatus.register:
+                  return Center(
+                    child: ElevatedButton(
+                      child: Text(value.message),
+                      onPressed: () {
+                        AutoRouter.of(context).push(const RegisterRoute());
+                      },
+                    ),
+                  );
+                case LoginStatus.signUp:
+                  return Center(
+                    child: ElevatedButton(
+                      child: Text(value.message),
+                      onPressed: () {
+                        AutoRouter.of(context).push(const LoginRoute());
+                      },
+                    ),
+                  );
+              }
+            },
+          ),
         ],
       ),
     );
