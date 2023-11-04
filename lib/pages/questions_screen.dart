@@ -29,6 +29,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
           padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.05),
           child: Stack(
             children: [
+              Align(
+                alignment: Alignment.centerRight,
+                child: _astroImageWidget(),
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
@@ -36,10 +40,6 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 children: [
                   _foodWidgetContainer(),
                 ],
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: _astroImageWidget(),
               ),
             ],
           ),
@@ -61,7 +61,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   Widget _foodWidgetContainer() {
     return Container(
-      padding: const EdgeInsets.only(top: 8.0),
+      padding: const EdgeInsets.only(top: 0.0),
       height: _deviceHeight * 0.25,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,6 +69,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _foodChoiceWidget(),
+          _yesterdaysfoodChoiceWidget(),
+          _allergyChoiceWidget()
         ],
       ),
     );
@@ -77,7 +79,30 @@ class _QuestionScreenState extends State<QuestionScreen> {
   Widget _foodChoiceWidget() {
     return CustomDropDownButtonClass(
       values: const [
-        'Choose your favorite food from the options',
+        'What is your favorite kind of food?',
+        'Latin',
+        'American',
+        'Italin'
+      ],
+      width: _deviceWidth,
+    );
+  }
+
+    Widget _allergyChoiceWidget() {
+    return CustomDropDownButtonClass(
+      values: const [
+        'Do you have any allergies?',
+        'Yes',
+        'No',
+      ],
+      width: _deviceWidth,
+    );
+  }
+
+    Widget _yesterdaysfoodChoiceWidget() {
+    return CustomDropDownButtonClass(
+      values: const [
+        'What kind of food did you have yesterday?',
         'Latin',
         'American',
         'Italin'

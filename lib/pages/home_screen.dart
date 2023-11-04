@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Navigator.pushNamed(
                   context,
-                  '/loginScreen',
+                  '/questionScreen',
                 );
               },
             ),
