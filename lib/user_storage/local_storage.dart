@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:no_name_app/user_model/users.dart';
 
@@ -42,4 +43,8 @@ Future<void> saveUser(ChoiceUser choiceUser) async {
     }
     return null;
   }
+
+  // Future<UserCredential> convertToUser() async {
+    
+  // }
 }

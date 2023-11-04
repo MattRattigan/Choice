@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:no_name_app/user_model/users.dart';
 import 'package:no_name_app/users_authenticate/user_anonymous.dart';
 import 'package:no_name_app/users_firestore/user_firestore.dart';
+import 'package:no_name_app/user_storage/local_storage.dart';
+
 
 class ChoiceRegister with AuthInteraction {
   Future<ChoiceUser?> registerWithEmailAndPassword(
@@ -9,6 +11,7 @@ class ChoiceRegister with AuthInteraction {
     try {
       UserCredential result = await auth.createUserWithEmailAndPassword(
           email: email!, password: password!);
+      // if (result != null) storage.saveUser(result);
       await DatabaseService(uid: result.user!.uid)
           .updateUserData(firstName: null, lastName: null, favorites: null);
       return ChoiceUser.fromFirebase(result.user);
