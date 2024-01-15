@@ -1,4 +1,4 @@
-![](https://github.com/MattRattigan/Choice/blob/main/choice1.gif)
+![](https://github.com/MattRattigan/Choice/blob/main/choice.gif)
 
 # Food Choice App
 
