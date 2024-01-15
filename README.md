@@ -31,4 +31,4 @@ Functions/Pages availiable in this build:
 ### Whats Next?
 We're working on completing functionality of the application so that a start to finish flow can be completed allowing resturuants to pop up as results from the questionaire. 
 
-![](https://github.com/MattRattigan/Choice/blob/main/Choice.gif)
+![](https://github.com/MattRattigan/Choice/blob/main/Choice.gif)|![](https://github.com/MattRattigan/Choice/blob/main/Choice2.gif)
