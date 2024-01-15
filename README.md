@@ -1,3 +1,5 @@
+![](https://github.com/MattRattigan/Choice/blob/main/choice1.gif)
+
 # Food Choice App
 
 A new Flutter project by software engeering students built to help people with deciding what kind of food take out they want to eat. 
